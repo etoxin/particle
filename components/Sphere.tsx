@@ -14,11 +14,7 @@ export type SphereProps = {
 export function Sphere(props: SphereProps) {
   const { particle, index } = props;
   const ref = useRef<THREE.Mesh>(null!);
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
   const [particleGroups] = useAtom(particleGroupsAtom);
-
-  useFrame((state, delta) => (ref.current.rotation.x += 0.01));
 
   useFrame((state, delta, xrFrame) => {
     const group = particleGroups[particle.groupIndex];
@@ -36,13 +32,10 @@ export function Sphere(props: SphereProps) {
       {...props.mesh}
       position={[particle.x, particle.y, particle.z]}
       ref={ref}
-      scale={clicked ? 0.2 : 0.1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
+      scale={0.5}
     >
       <sphereGeometry args={[1, 16, 16]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : particle.colour} />
+      <meshStandardMaterial color={particle.colour} />
     </mesh>
   );
 }
