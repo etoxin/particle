@@ -5,7 +5,7 @@ import { useControls } from "leva";
 
 export function Stage() {
   const props = useControls({
-    size: { value: 2, min: 1, max: 1000, step: 1 },
+    size: { value: 20, min: 1, max: 1000, step: 1 },
   });
   return (
     <Canvas>

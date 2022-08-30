@@ -8,4 +8,5 @@ export type Particle = {
   vy: number;
   vz: number;
   colour: string;
+  groupIndex: number;
 };

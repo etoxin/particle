@@ -2,23 +2,33 @@ import * as THREE from "three";
 import React, { useRef, useState } from "react";
 import { useFrame, ThreeElements } from "@react-three/fiber";
 import { Particle } from "../models/Particle";
+import { useAtom } from "jotai";
+import { particleGroupsAtom } from "./Particles";
 
 export type SphereProps = {
   mesh?: ThreeElements["mesh"];
   particle: Particle;
+  index: number;
 };
 
 export function Sphere(props: SphereProps) {
-  const { particle } = props;
+  const { particle, index } = props;
   const ref = useRef<THREE.Mesh>(null!);
   const [hovered, hover] = useState(false);
   const [clicked, click] = useState(false);
+  const [particleGroups] = useAtom(particleGroupsAtom);
 
   useFrame((state, delta) => (ref.current.rotation.x += 0.01));
 
   useFrame((state, delta, xrFrame) => {
-    ref.current.position.x += 0.01;
-    ref.current.position.y += 0.01;
+    const group = particleGroups[particle.groupIndex];
+    if (!group) return;
+    const p = group[index];
+    if (!p) return;
+
+    ref.current.position.x = particleGroups[particle.groupIndex][index].x;
+    ref.current.position.y = particleGroups[particle.groupIndex][index].y;
+    ref.current.position.z = particleGroups[particle.groupIndex][index].z;
   });
 
   return (
