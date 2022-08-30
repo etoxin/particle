@@ -33,7 +33,7 @@ export default function Particles({ size = 2 }) {
 
   const movement = (particles: Particle[][]): Particle[][] => {
     const [particles1, particles2] = particles;
-    const gravity = -0.005;
+    const gravity = -0.0005;
 
     for (let i = 0; i < particles1.length; i++) {
       let fx = 0;
@@ -47,7 +47,7 @@ export default function Particles({ size = 2 }) {
         dx = a.x - b.x;
         dy = a.y - b.y;
         d = Math.sqrt(dx * dx + dy * dy);
-        if (d > 0) {
+        if (d > 0 && d < 80) {
           F = (gravity * 0.9) / d;
           fx += F * dx;
           fy += F * dy;
@@ -55,13 +55,12 @@ export default function Particles({ size = 2 }) {
       }
       if (!a || !b) throw Error("undefined A");
       a.vx = a.vx + fx * 0.5;
-      a.vy = a.vy + fy * 0.5;
-      a.x += a.vx;
-      a.y += a.vy;
-
       b.vx = b.vx + fx * 0.5;
+      a.vy = a.vy + fy * 0.5;
       b.vy = b.vy + fy * 0.5;
+      a.x += a.vx;
       b.x += b.vx;
+      a.y += a.vy;
       b.y += b.vy;
     }
 
