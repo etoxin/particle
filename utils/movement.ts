@@ -1,8 +1,9 @@
 import { Particle } from "../models/Particle";
+import {XStageWidth, YStageWidth} from "./constants";
 
 export const movement = (
   particles1: Particle[],
-  particles2: Particle[],
+  particles2: Particle[]
 ): Particle[][] => {
   for (let i = 0; i < particles1.length; i++) {
     let fx = 0;
@@ -28,6 +29,12 @@ export const movement = (
     a.vy = a.vy + fy * 0.5;
     a.x += a.vx;
     a.y += a.vy;
+    if (a.x <= -XStageWidth || a.x >= XStageWidth) {
+      a.vx *= -1;
+    }
+    if (a.y <= -YStageWidth || a.y >= YStageWidth) {
+      a.vy *= -1;
+    }
   }
 
   return [particles1, particles2];
