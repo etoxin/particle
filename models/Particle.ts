@@ -1,5 +1,3 @@
-import { ThreeElements } from "@react-three/fiber";
-
 export type Particle = {
   x: number;
   y: number;
