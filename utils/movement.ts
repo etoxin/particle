@@ -2,10 +2,8 @@ import { Particle } from "../models/Particle";
 
 export const movement = (
   particles1: Particle[],
-  particles2: Particle[]
+  particles2: Particle[],
 ): Particle[][] => {
-  const gravity = -0.0005;
-
   for (let i = 0; i < particles1.length; i++) {
     let fx = 0;
     let fy = 0;
@@ -14,6 +12,7 @@ export const movement = (
     for (let j = 0; j < particles2.length; j++) {
       a = particles1[i];
       b = particles2[j];
+      const gravity = a.gravity;
 
       dx = a.x - b.x;
       dy = a.y - b.y;

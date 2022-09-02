@@ -12,11 +12,11 @@ export default function Particles({ size = 2 }) {
   const [particleGroups, setParticleGroups] = useAtom(particleGroupsAtom);
 
   const memoizedParticleGroup1 = useMemo<Particle[]>(
-    () => createParticleGroup(0, size, "blue"),
+    () => createParticleGroup(0, size, "blue", -0.0005),
     [size]
   );
   const memoizedParticleGroup2 = useMemo<Particle[]>(
-    () => createParticleGroup(1, size, "green"),
+    () => createParticleGroup(1, size, "green", -0.005),
     [size]
   );
 

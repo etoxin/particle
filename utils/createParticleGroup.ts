@@ -4,7 +4,8 @@ import { randomInteger } from "./randomInteger";
 export const createParticleGroup = (
   groupIndex: number,
   size: number,
-  colour: string
+  colour: string,
+  gravity: number = -0.0005
 ): Particle[] => {
   const particles = [];
   for (let i = 0; i < size; i++) {
@@ -15,6 +16,7 @@ export const createParticleGroup = (
       vx: 0,
       vy: 0,
       vz: 0,
+      gravity,
       colour,
       groupIndex,
     });
