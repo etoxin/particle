@@ -16,7 +16,7 @@ export default function Particles({ size = 2 }) {
     [size]
   );
   const memoizedParticleGroup2 = useMemo<Particle[]>(
-    () => createParticleGroup(1, size, "green", 0.0005),
+    () => createParticleGroup(1, size, "green", -0.0005),
     [size]
   );
 
