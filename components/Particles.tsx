@@ -28,7 +28,11 @@ export default function Particles({ size = 2 }) {
     if (!particleGroups) return;
     if (!particleGroups[0]) return;
     if (!particleGroups[1]) return;
-    setParticleGroups(movement(particleGroups));
+
+    const step1 = movement(particleGroups[0], particleGroups[1]);
+    const step2 = movement(step1[1], step1[0]);
+
+    setParticleGroups(step2);
   });
 
   return (

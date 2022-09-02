@@ -1,7 +1,9 @@
 import { Particle } from "../models/Particle";
 
-export const movement = (particles: Particle[][]): Particle[][] => {
-  const [particles1, particles2] = particles;
+export const movement = (
+  particles1: Particle[],
+  particles2: Particle[]
+): Particle[][] => {
   const gravity = -0.0005;
 
   for (let i = 0; i < particles1.length; i++) {
@@ -24,14 +26,10 @@ export const movement = (particles: Particle[][]): Particle[][] => {
     }
     if (!a || !b) throw Error("undefined A");
     a.vx = a.vx + fx * 0.5;
-    b.vx = b.vx + fx * 0.5;
     a.vy = a.vy + fy * 0.5;
-    b.vy = b.vy + fy * 0.5;
     a.x += a.vx;
-    b.x += b.vx;
     a.y += a.vy;
-    b.y += b.vy;
   }
 
-  return particles;
+  return [particles1, particles2];
 };
