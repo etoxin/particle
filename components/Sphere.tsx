@@ -32,7 +32,7 @@ export function Sphere(props: SphereProps) {
       {...props.mesh}
       position={[particle.x, particle.y, particle.z]}
       ref={ref}
-      scale={0.03}
+      scale={1}
     >
       <sphereGeometry args={[1, 16, 16]} />
       <meshStandardMaterial color={particle.colour} />
