@@ -12,7 +12,7 @@ export const createParticleGroup = (
     particles.push({
       x: randomInteger(-5, 5),
       y: randomInteger(-5, 5),
-      z: -12,
+      z: randomInteger(-5, 5),
       vx: 0,
       vy: 0,
       vz: 0,

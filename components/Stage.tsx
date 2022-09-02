@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import React from "react";
 import Particles from "./Particles";
 import { useControls } from "leva";
@@ -12,6 +13,12 @@ export function Stage() {
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Particles {...props} />
+      <OrbitControls
+        makeDefault
+        autoRotate
+        autoRotateSpeed={0.5}
+        zoomSpeed={0.1}
+      />
     </Canvas>
   );
 }
